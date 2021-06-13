@@ -42,7 +42,7 @@ class App extends React.Component {
             <Form.Control
               onChange={this.updateCityNameState}
               type="text"
-              placeholder="write a name of a city"
+              placeholder="write city name"
             />
           </Form.Group>
           <Form.Group
