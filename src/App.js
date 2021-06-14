@@ -6,41 +6,49 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      cityName: "",
-      cityInfo: {},
-      displayInfo: false,
+      cityInfo: "",
+      error: "",
     };
-  }
-  updateCityNameState = (e) => {
-    this.setState({
-      cityName: e.target.value,
-    });
   };
+
+  // updateCityNameState = (e) => {
+  //   this.setState({
+  //     cityName: e.target.value,
+  //   });
+  // };
+
   getCityData = async (e) => {
+
     e.preventDefault();
-    const axiosResponse = await axios.get(
-      `https://us1.locationiq.com/v1/search.php?key=pk.3f813a6f4eddcbf99e2fe25098a5daba&city=${this.state.cityName}&format=json`
-    );
-    console.log(axiosResponse);
-    this.setState({
-      cityInfo: axiosResponse.data[0],
-      displayInfo: true,
-    });
+
+    let cityName = e.target.value;
+    let serverUrl = process.env.REACT_APP_SERVER;
+    let url = `${serverUrl}/weather?lat=-33.87&lon=151.21&searchQuery=${cityName}`;
+
+    try {
+      let data = await axios.get(url);
+      this.setState({ cityInfo: data.data[0], error: "" });
+      console.log(this.state.cityInfo);
+    } catch {
+      this.setState({ error: "There is an error" });
+    }
   };
+ 
+
   render() {
     return (
-      <div className='body'>
+      <div className="body">
         <Header />
         <Form onSubmit={this.getCityData} className="form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label >City Name:</Form.Label>
+            <Form.Label>City Name:</Form.Label>
             <Form.Control
-              onChange={this.updateCityNameState}
+              onChange={this.getCityData}
               type="text"
               placeholder="write city name"
             />
@@ -54,15 +62,10 @@ class App extends React.Component {
           </Button>
         </Form>
         {this.state.displayInfo && (
-          <div className='result'>
-            <p className="city1">{this.state.cityInfo.display_name}</p>
-            <p className="city">{this.state.cityInfo.lat}</p>
-            <p className="city">{this.state.cityInfo.lon}</p>
-            <img
-              className="map"
-              src={`https://maps.locationiq.com/v3/staticmap?key=pk.3f813a6f4eddcbf99e2fe25098a5daba&q&center=${this.state.cityInfo.lat},${this.state.cityInfo.lon}&zoom=15`}
-              alt=""
-            />
+          <div className="result">
+            <p> moon_phase : {this.state.cityInfo.moon_phase}</p>
+            <p> snow_depth :{this.state.cityInfo.snow_depth}</p>
+            <p> clouds : {this.state.cityInfo.clouds}</p>
           </div>
         )}
         <Footer />
