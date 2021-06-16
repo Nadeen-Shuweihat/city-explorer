@@ -24,13 +24,30 @@ code {
   margin-top: 30px;
 }
 
-.result{
+.result {
   text-align: center;
   margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.footer{
-  margin-top: 30px;
+.weatherData {
+  width: 170px;
+  height: 170px;
+  background-color: rgba(56, 123, 248, 0.61);
+  margin: 5px;
+  border-radius: 10px;
+
+  padding: 10px;
+ 
+}
+
+.error{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer {
+  margin-top: 45px;
   text-align: center;
 }
-
