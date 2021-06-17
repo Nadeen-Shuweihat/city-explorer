@@ -5,9 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class Movie08 extends Component {
   state = {
-   
-    error: "",
     moviesData: [],
+    error: "",
   };
 
   getCityData = (e) => {
@@ -16,16 +15,14 @@ export default class Movie08 extends Component {
 
     let cityName = e.target.cityname.value;
     let serverUrl = process.env.REACT_APP_SERVER;
-   
+
     let movieUrl = `${serverUrl}/movies?searchQuery=${cityName}`;
 
-    
-    
     axios
-    .get(movieUrl)
-    .then((results) => {
-          this.setState({ moviesData: results.data, error: "" });
-        console.log('moviedata',this.state.moviesData);
+      .get(movieUrl)
+      .then((results) => {
+        this.setState({ moviesData: results.data, error: "" });
+        console.log("moviedata", this.state.moviesData);
       })
       .catch((error) => {
         this.setState({
@@ -50,21 +47,22 @@ export default class Movie08 extends Component {
           <input type="submit" className="btn btn-primary" />
         </Form>
 
-   
-          {/* <p className="error"> ATTENTION {this.state.error}</p> */}
-    
-        <>
-        { this.state.moviesData.map((item) => {
-            return (
-                <figure> 
-                    <img src={item.image}/>
+        {this.state.moviesData ? (
+          <>
+            {this.state.moviesData.map((item) => {
+              return (
+                <div>
+                  <figure>
+                    <img src={item.image} />
                     <figcaption>{item.title}</figcaption>
-                </figure>
-            )
-        }) }
-          
-        
-        </>
+                  </figure>
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <p className="error"> ATTENTION{this.state.error}</p>
+        )}
       </div>
     );
   }
