@@ -25,12 +25,13 @@ City explorer is built to provide the name of the city the user enter with some 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Ibrahim al dernin , Maram Mustafa , TA's
 
+////////////////////////////////// LAB 07 ///////////////////////////////////////////////////////
 
 # Time Estimates
 
-Name of feature: ___________city explorer_____________________
+Name of feature: ___________city explorer____-lab06_________________
 
 Estimate of time needed to complete: __5 hours___
 
@@ -41,5 +42,44 @@ Finish time: __still not finish 100% ___
 Actual time needed to complete: _____
 
 
+////////////////////////////////// LAB 07 ///////////////////////////////////////////////////////
 
-#### http://localhost:3010/weather?lat=-33.87&lon=151.21&searchQuery=Sydny&format=json
+# Time Estimates
+
+Name of feature: ___________city explorer____-lab07________________
+
+Estimate of time needed to complete: _____
+
+Start time: ___monday at 3__
+
+Finish time: __wednesday night___
+
+Actual time needed to complete: _____
+
+////////////////////////////////// LAB 08 ///////////////////////////////////////////////////////
+
+# Time Estimates
+
+Name of feature: ___________city explorer____-lab08________________
+
+Estimate of time needed to complete: _____
+
+Start time: ___Wendnesday night__
+
+Finish time: __thursday night___
+
+Actual time needed to complete: _____
+
+////////////////////////////////// LAB 09 ///////////////////////////////////////////////////////
+
+# Time Estimates
+
+Name of feature: ___________city explorer____-lab09________________
+
+Estimate of time needed to complete: _____
+
+Start time: ___friday__
+
+Finish time: __friday___
+
+Actual time needed to complete: __2 hours___
