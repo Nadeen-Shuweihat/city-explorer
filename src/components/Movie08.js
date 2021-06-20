@@ -9,9 +9,8 @@ export default class Movie08 extends Component {
       <div className="body">
         
 
-        {this.props.moviesData ? (
-          <>
-            {this.props.moviesData.map((item) => {
+        {this.props.moviesData &&
+          this.props.moviesData.map((item) => {
               return (
                 <div>
                   <figure>
@@ -21,11 +20,11 @@ export default class Movie08 extends Component {
                 </div>
               );
             })}
-          </>
-        ) : (
-          <p  className="error"> ATTENTION {this.props.error}</p>
-        )}
+          
+      
       </div>
+          
+        
     );
   }
 }

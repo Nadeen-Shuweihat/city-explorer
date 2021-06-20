@@ -7,19 +7,32 @@ import Weather07 from './Weather07';
 
 class WeatherandMovies extends Component {
   state = {
-    cityInfo: [],
-    moviesData: [],
-    error: "",
+    cityInfo: '',
+    moviesData: '',
+    error: '',
   };
 
   getCityData = (e) => {
     e.preventDefault();
     console.log("getCityData");
 
-    let cityName = e.target.cityname.value;
+    let cityName = e.target.cityName.value;
     let serverUrl = process.env.REACT_APP_SERVER;
     let url = `${serverUrl}/weather?searchQuery=${cityName}`;
     let movieUrl = `${serverUrl}/movies?searchQuery=${cityName}`;
+    
+    axios
+    .get(url)
+    .then((data) => {
+      this.setState({ cityInfo: data.data, error: "" });
+      console.log(this.state.cityInfo);
+    })
+    .catch((error) => {
+      this.setState({
+        error: "There is an error , choose another city name",
+        cityInfo: null,
+      });
+    });
 
     axios
       .get(movieUrl)
@@ -30,22 +43,10 @@ class WeatherandMovies extends Component {
       .catch((error) => {
         this.setState({
           error: " There is an error , choose another movie name",
-          moviesData: null,
+          moviesData: null
         });
       });
 
-      axios
-      .get(url)
-      .then((data) => {
-        this.setState({ cityInfo: data.data, error: "" });
-        console.log(this.state.cityInfo);
-      })
-      .catch((error) => {
-        this.setState({
-          error: "There is an error , choose another city name",
-          cityInfo: null,
-        });
-      });
 
   };
   render() {
@@ -56,7 +57,7 @@ class WeatherandMovies extends Component {
         <Form.Control
           type="text"
           placeholder="write city name"
-          name="cityname"
+          name="cityName"
         />
       </Form.Group>
       <input type="submit" className="btn btn-primary" />
